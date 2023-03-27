@@ -1,7 +1,19 @@
+### SERVER
 server:
-  port: ${server.port:7000}
+  port: ${server.port:7070}
 
+### LOGGER
+logging:
+  level:
+    root: INFO
+    com:
+      example: TRACE
+
+### SPRING
 spring:
+  output:
+    ansi:
+      enabled: ALWAYS
   jackson:
     property-naming-strategy: SNAKE_CASE
   kafka:
@@ -18,6 +30,35 @@ spring:
         value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
         retries: 10
 
+### ACTUATOR
+management:
+  endpoint:
+    health:
+      show-details: always
+  endpoints:
+    web:
+      base-path: /
+      exposure:
+        include: health, info
+
+### INFO ENDPOINT CONFIG
+info:
+  app:
+    name: "content-manager-service"
+    description: "Content manager service powered by Cyber Makers Network community"
+  organization: "Cyber Makers Network"
+  java-version: ${java.version}
+  java-vendor: ${java-vendor}
+
+### SWAGGER
+springdoc:
+  api-docs:
+    path: /api-docs
+  swagger-ui:
+    path: /docs
+    operationsSorter: method
+
+### APPLICATION
 app:
   producer:
     kafka:
