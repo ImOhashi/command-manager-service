@@ -11,6 +11,8 @@ logging:
 
 ### SPRING
 spring:
+  application:
+    name: "Command Manager Service"
   output:
     ansi:
       enabled: ALWAYS
@@ -43,12 +45,12 @@ management:
 
 ### INFO ENDPOINT CONFIG
 info:
-  app:
-    name: "content-manager-service"
-    description: "Content manager service powered by Cyber Makers Network community"
-  organization: "Cyber Makers Network"
-  java-version: ${java.version}
-  java-vendor: ${java-vendor}
+  application:
+    name: ${spring.application.name}
+    description: Command manager service interface
+    version: '@project.version@'
+    spring-cloud-version: '@spring-cloud.version@'
+    spring-boot-version: '@project.parent.version@'
 
 ### SWAGGER
 springdoc:
